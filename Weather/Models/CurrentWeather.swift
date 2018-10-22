@@ -7,11 +7,15 @@
 //
 
 struct CurrentWeather: Codable {
+    let name: String
+    let lastUpdate: Double
     let coord: Coord
     let weather: [WeatherType]
     let temperature: Temp
 
     enum CodingKeys: String, CodingKey {
+        case name
+        case lastUpdate = "dt"
         case coord
         case weather
         case temperature = "main"

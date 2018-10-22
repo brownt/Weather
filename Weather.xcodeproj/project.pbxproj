@@ -17,7 +17,7 @@
 		DAFE9F512174A9820092978F /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE9F502174A9820092978F /* CurrentWeather.swift */; };
 		DAFE9F532174A9980092978F /* WeatherType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE9F522174A9980092978F /* WeatherType.swift */; };
 		DAFE9F562174AA620092978F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE9F552174AA620092978F /* SettingsViewController.swift */; };
-		DAFE9F592174C7E80092978F /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE9F582174C7E80092978F /* ApiService.swift */; };
+		DAFE9F592174C7E80092978F /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE9F582174C7E80092978F /* WeatherService.swift */; };
 		DAFE9F5B2174CFDF0092978F /* Coord.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE9F5A2174CFDF0092978F /* Coord.swift */; };
 		DAFE9F5D2174D4A00092978F /* Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE9F5C2174D4A00092978F /* Temp.swift */; };
 		F8D98A344E7BBDE6233BD449 /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E07022CC6578E7861F5509AE /* Pods_Weather.framework */; };
@@ -51,7 +51,7 @@
 		DAFE9F502174A9820092978F /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		DAFE9F522174A9980092978F /* WeatherType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherType.swift; sourceTree = "<group>"; };
 		DAFE9F552174AA620092978F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		DAFE9F582174C7E80092978F /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		DAFE9F582174C7E80092978F /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		DAFE9F5A2174CFDF0092978F /* Coord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coord.swift; sourceTree = "<group>"; };
 		DAFE9F5C2174D4A00092978F /* Temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temp.swift; sourceTree = "<group>"; };
 		E07022CC6578E7861F5509AE /* Pods_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,7 +181,7 @@
 		DAFE9F572174C7A20092978F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				DAFE9F582174C7E80092978F /* ApiService.swift */,
+				DAFE9F582174C7E80092978F /* WeatherService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -359,7 +359,7 @@
 				DAFE9F512174A9820092978F /* CurrentWeather.swift in Sources */,
 				DAFE9F2B216DDAA60092978F /* AppDelegate.swift in Sources */,
 				DAFE9F5B2174CFDF0092978F /* Coord.swift in Sources */,
-				DAFE9F592174C7E80092978F /* ApiService.swift in Sources */,
+				DAFE9F592174C7E80092978F /* WeatherService.swift in Sources */,
 				DAFE9F562174AA620092978F /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,9 +7,9 @@
 //
 
 struct Temp: Codable {
-    let tempNow: Double
-    let tempMin: Double
-    let tempMax: Double
+    let tempNow: Double?
+    let tempMin: Double?
+    let tempMax: Double?
 
     enum CodingKeys: String, CodingKey {
         case tempNow = "temp"
