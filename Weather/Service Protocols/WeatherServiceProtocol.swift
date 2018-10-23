@@ -12,8 +12,4 @@ protocol WeatherServiceProtocol {
 
     func getWeather(forCity: String, completion: @escaping (_ weather: CurrentWeather?, _ error: Error?) -> Void)
 
-    func formatDateTime(interval: Double) -> String
-
-    func temperatureToString(temp: Double) -> String
-
 }

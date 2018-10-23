@@ -11,8 +11,7 @@ import Promises
 class MainViewController: UIViewController {
 
     let weatherService = AppContext.weatherService
-//    let degC = "°C"
-//    let degF = "°F"
+    private(set) var weatherViewModel: WeatherViewModel?
 
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var weatherTypeLabel: UILabel!
@@ -21,9 +20,31 @@ class MainViewController: UIViewController {
     @IBAction func getWeatherButton(_ sender: Any) {
         displayWeather()
     }
+
+    var searchResult: CurrentWeather? {
+        didSet {
+            guard let searchResult = searchResult else { return }
+            weatherViewModel = WeatherViewModel.init(currentWeather: searchResult)
+            DispatchQueue.main.async {
+                self.updateLabels()
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        displayWeather()
+    }
+}
 
+extension MainViewController {
+
+    private func updateLabels() {
+        guard let weatherViewModel = weatherViewModel else { return }
+        placeLabel.text = weatherViewModel.placeString
+        weatherTypeLabel.text = weatherViewModel.weatherTypeString
+        temperatureLabel.text = weatherViewModel.temperatureString
+        lastUpdateLabel.text = weatherViewModel.lastUpdatedString
     }
 
     func displayWeather() {
@@ -35,13 +56,7 @@ class MainViewController: UIViewController {
             guard let weather = weather else {
                 return
             }
-//            print(weather)
-            DispatchQueue.main.async{
-                self.placeLabel.text = weather.name
-                self.lastUpdateLabel.text = self.weatherService.formatDateTime(interval: weather.lastUpdate)
-                self.weatherTypeLabel.text = weather.weather[0].main
-                self.temperatureLabel.text = self.weatherService.temperatureToString(temp: weather.temperature.tempNow)
-            }
+            self.searchResult = weather
         }
     }
 }

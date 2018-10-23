@@ -87,16 +87,4 @@ extension WeatherService {
             })
         }
     }
-
-    func formatDateTime(interval: Double) -> String {
-        let date = Date(timeIntervalSince1970: interval)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd, hh:mm"
-        return "Last updated: \(dateFormatter.string(from: date))"
-    }
-
-    func temperatureToString(temp: Double) -> String {
-        let roundNum = Int(temp.rounded(.toNearestOrAwayFromZero))
-        return String(roundNum) + "°C"
-    }
 }
