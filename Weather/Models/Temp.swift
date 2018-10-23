@@ -7,7 +7,7 @@
 //
 
 struct Temp: Codable {
-    let tempNow: Double?
+    let tempNow: Double
     let tempMin: Double?
     let tempMax: Double?
 

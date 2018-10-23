@@ -94,11 +94,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBm-zY-1yd">
+                                <rect key="frame" x="187.5" y="260" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="CBm-zY-1yd" firstAttribute="top" secondItem="IUg-PX-0Us" secondAttribute="topMargin" constant="30" id="8rZ-Oh-gKS"/>
                             <constraint firstItem="AoT-ED-RDP" firstAttribute="top" secondItem="6Qy-sA-hIi" secondAttribute="bottom" constant="15" id="BiK-OZ-1tI"/>
                             <constraint firstItem="MMw-CS-oj9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FAV-5d-Xy7"/>
+                            <constraint firstItem="CBm-zY-1yd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="K9l-KR-taB"/>
                             <constraint firstItem="AoT-ED-RDP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dBP-TA-Jsc"/>
                             <constraint firstItem="IUg-PX-0Us" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gs9-TP-IRe"/>
                             <constraint firstItem="IUg-PX-0Us" firstAttribute="top" secondItem="AoT-ED-RDP" secondAttribute="bottom" constant="15" id="k06-QK-asz"/>
@@ -110,6 +118,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="EBN-hF-kDC"/>
                     <connections>
+                        <outlet property="lastUpdateLabel" destination="CBm-zY-1yd" id="OBk-Fl-UEI"/>
                         <outlet property="placeLabel" destination="6Qy-sA-hIi" id="qvB-5A-arA"/>
                         <outlet property="temperatureLabel" destination="IUg-PX-0Us" id="1PJ-BI-fjm"/>
                         <outlet property="weatherTypeLabel" destination="AoT-ED-RDP" id="4D8-l7-SW1"/>

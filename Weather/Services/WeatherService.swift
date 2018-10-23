@@ -14,47 +14,12 @@ import Foundation
 //    case urlSessionError
 //}
 
-class WeatherService {
+class WeatherService: WeatherServiceProtocol {
 
     private let openWeatherMapBaseURL = "https://api.openweathermap.org/data/2.5/weather"
     private let openWeatherMapAPIKey = "b2303b5f4bda6b6ed6658ba9fb4afcf4"
 
-    // test Google Promises
-//    func constructWeatherURL(forCity: String) -> Promise<String> {
-//
-//        let weatherURL = "\(openWeatherMapBaseURL)?q=\(forCity),uk&units=metric&appid=\(openWeatherMapAPIKey)"
-//
-//        return Promise { () -> String in
-//            guard let url: URL = URL(string: weatherURL) else {
-//                throw PromiseError.invalidURL
-//            }
-//            print("URL is: \(url)")
-//            return url.absoluteString
-//        }
-//    }
-
-    func getWeather(forCity: String, completion: @escaping (_ weather: CurrentWeather?, _ error: Error?) -> Void) {
-//   let weatherURL = constructWeatherURL(forCity: forCity)
-        let weatherURL = "\(openWeatherMapBaseURL)?q=\(forCity),uk&units=metric&appid=\(openWeatherMapAPIKey)"
-        print("URL is: \(weatherURL)")
-        // get the json weather data
-        getJSON(urlString: weatherURL) { (data, error) in
-            guard let data = data, error == nil else {
-                print("Failed to get data")
-                return completion(nil, error)
-            }
-            // decode json to object
-            self.createDataObject(json: data, completion: { (weather, error) in
-                if let error = error {
-                    print("Failed to convert data")
-                    return completion(nil, error)
-                }
-                return completion(weather, nil)
-            })
-        }
-    }
-
-    func getJSON(urlString: String, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) {
+    private func getJSON(urlString: String, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         guard let url = URL(string: urlString) else {
             print("urlString isn't a URL")
             return
@@ -74,7 +39,7 @@ class WeatherService {
         task.resume()
     }
 
-    func createDataObject(json: Data, completion: @escaping (_ data: CurrentWeather?, _ error: Error?) -> Void) {
+    private func createDataObject(json: Data, completion: @escaping (_ data: CurrentWeather?, _ error: Error?) -> Void) {
         do {
             let decoder = JSONDecoder()
             let weather = try decoder.decode(CurrentWeather.self, from: json)
@@ -85,4 +50,53 @@ class WeatherService {
         }
     }
 
+    // test Google Promises
+//    func constructWeatherURL(forCity: String) -> Promise<String> {
+//
+//        let weatherURL = "\(openWeatherMapBaseURL)?q=\(forCity),uk&units=metric&appid=\(openWeatherMapAPIKey)"
+//
+//        return Promise { () -> String in
+//            guard let url: URL = URL(string: weatherURL) else {
+//                throw PromiseError.invalidURL
+//            }
+//            print("URL is: \(url)")
+//            return url.absoluteString
+//        }
+//    }
+
+}
+
+extension WeatherService {
+
+    func getWeather(forCity: String, completion: @escaping (_ weather: CurrentWeather?, _ error: Error?) -> Void) {
+        let weatherURL = "\(openWeatherMapBaseURL)?q=\(forCity),uk&units=metric&appid=\(openWeatherMapAPIKey)"
+        print("URL is: \(weatherURL)")
+        // get the json weather data
+        getJSON(urlString: weatherURL) { (data, error) in
+            guard let data = data, error == nil else {
+                print("Failed to get data")
+                return completion(nil, error)
+            }
+            // decode json to object
+            self.createDataObject(json: data, completion: { (weather, error) in
+                if let error = error {
+                    print("Failed to convert data")
+                    return completion(nil, error)
+                }
+                return completion(weather, nil)
+            })
+        }
+    }
+
+    func formatDateTime(interval: Double) -> String {
+        let date = Date(timeIntervalSince1970: interval)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, hh:mm"
+        return "Last updated: \(dateFormatter.string(from: date))"
+    }
+
+    func temperatureToString(temp: Double) -> String {
+        let roundNum = Int(temp.rounded(.toNearestOrAwayFromZero))
+        return String(roundNum) + "°C"
+    }
 }
